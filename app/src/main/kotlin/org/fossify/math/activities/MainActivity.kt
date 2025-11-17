@@ -5,6 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
+import android.widget.LinearLayout
+import androidx.compose.ui.graphics.Color
 import androidx.core.content.res.ResourcesCompat
 import me.grantland.widget.AutofitHelper
 import org.fossify.commons.extensions.appLaunched
@@ -32,6 +34,7 @@ import org.fossify.math.extensions.updateViewColors
 import org.fossify.math.helpers.CALCULATOR_STATE
 import org.fossify.math.helpers.Calculator
 import org.fossify.math.helpers.CalculatorImpl
+import org.fossify.math.helpers.newCalculatorImpl
 import org.fossify.math.helpers.DIVIDE
 import org.fossify.math.helpers.HistoryHelper
 import org.fossify.math.helpers.MINUS
@@ -41,6 +44,20 @@ import org.fossify.math.helpers.PLUS
 import org.fossify.math.helpers.POWER
 import org.fossify.math.helpers.ROOT
 import org.fossify.math.helpers.getDecimalSeparator
+import androidx.core.view.isVisible
+import org.fossify.math.helpers.ARCCOS
+import org.fossify.math.helpers.ARCSIN
+import org.fossify.math.helpers.ARCTAN
+import org.fossify.math.helpers.CLOSE_BRACKET
+import org.fossify.math.helpers.COS
+import org.fossify.math.helpers.FACTORIAL
+import org.fossify.math.helpers.LN
+import org.fossify.math.helpers.LOG
+import org.fossify.math.helpers.NEPERO_NUM
+import org.fossify.math.helpers.OPEN_BRACKET
+import org.fossify.math.helpers.PI_NUM
+import org.fossify.math.helpers.SIN
+import org.fossify.math.helpers.TAN
 
 class MainActivity : SimpleActivity(), Calculator {
     private var storedTextColor = 0
@@ -75,18 +92,37 @@ class MainActivity : SimpleActivity(), Calculator {
         binding.btnPercent?.setOnClickOperation(PERCENT)
         binding.btnPower?.setOnClickOperation(POWER)
         binding.btnRoot?.setOnClickOperation(ROOT)
-        binding.btnMinus?.setOnLongClickListener { calc.turnToNegative() }
         binding.btnClear?.setVibratingOnClickListener { calc.handleClear() }
         binding.btnClear?.setOnLongClickListener {
             calc.handleReset()
             true
         }
 
+
+        // TODO check history helper
+        binding.btnLog?.setOnClickOperation(LOG)
+        binding.btnLn?.setOnClickOperation(LN)
+        binding.btnSin?.setOnClickOperation(SIN)
+        binding.btnCos?.setOnClickOperation(COS)
+        binding.btnTan?.setOnClickOperation(TAN)
+        binding.btnArcsin?.setOnClickOperation(ARCSIN)
+        binding.btnArccos?.setOnClickOperation(ARCCOS)
+        binding.btnArctan?.setOnClickOperation(ARCTAN)
+        binding.btnFactorial?.setOnClickOperation(FACTORIAL)
+        binding.btnOpenBracket?.setOnClickOperation(OPEN_BRACKET)
+        binding.btnClosedBracket?.setOnClickOperation(CLOSE_BRACKET)
+
+        binding.btnPi?.setOnClickOperation(PI_NUM)
+        binding.btnE?.setOnClickOperation(NEPERO_NUM)
+
         getButtonIds().forEach {
             it?.setVibratingOnClickListener { view ->
                 calc.numpadClicked(view.id)
             }
         }
+
+        binding.btnRad?.setVibratingOnClickListener {  handleRad() }
+        binding.btnDeg?.setVibratingOnClickListener {  handleDeg() }
 
         binding.btnEquals?.setVibratingOnClickListener { calc.handleEquals() }
         binding.formula?.setOnLongClickListener { copyToClipboard(false) }
@@ -117,7 +153,7 @@ class MainActivity : SimpleActivity(), Calculator {
         binding.apply {
             arrayOf(
                 btnPercent, btnPower, btnRoot, btnClear, btnReset, btnDivide, btnMultiply, btnPlus,
-                btnMinus, btnEquals, btnDecimal
+                btnMinus, btnEquals, btnDecimal, btnRad
             ).forEach {
                 it?.background = ResourcesCompat.getDrawable(
                     resources, org.fossify.commons.R.drawable.pill_background, theme
@@ -126,6 +162,16 @@ class MainActivity : SimpleActivity(), Calculator {
             }
 
             arrayOf(btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9).forEach {
+                it?.background = ResourcesCompat.getDrawable(
+                    resources, org.fossify.commons.R.drawable.pill_background, theme
+                )
+                it?.background?.alpha = LOWER_ALPHA_INT
+            }
+
+            arrayOf(
+                btnDeg, btnSin, btnCos, btnTan, btnArcsin, btnArccos, btnArctan, btnLog,
+                btnLn, btnE, btnFactorial, btnPi, btnOpenBracket, btnClosedBracket
+            ).forEach {
                 it?.background = ResourcesCompat.getDrawable(
                     resources, org.fossify.commons.R.drawable.pill_background, theme
                 )
@@ -149,7 +195,7 @@ class MainActivity : SimpleActivity(), Calculator {
         }
     }
 
-    override fun onSaveInstanceState(bundle: Bundle) {
+    override fun onSaveInstanceState(bundle:  Bundle) {
         super.onSaveInstanceState(bundle)
         bundle.putString(CALCULATOR_STATE, calc.getCalculatorStateJson().toString())
     }
@@ -157,6 +203,7 @@ class MainActivity : SimpleActivity(), Calculator {
     private fun setupOptionsMenu() {
         binding.mainToolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
+                R.id.scientific_calculator -> showScientificBtn()
                 R.id.history -> showHistory()
                 R.id.more_apps_from_us -> launchMoreAppsFromUsIntent()
                 R.id.unit_converter -> launchUnitConverter()
@@ -184,6 +231,22 @@ class MainActivity : SimpleActivity(), Calculator {
     private fun checkHaptic(view: View) {
         if (vibrateOnButtonPress) {
             view.performHapticFeedback()
+        }
+    }
+
+    private fun showScientificBtn() {
+        binding.apply {
+            arrayOf(
+                btnRad, btnDeg, btnSin, btnCos, btnTan, btnArcsin, btnArccos, btnArctan, btnLog,
+                btnLn, btnE, btnFactorial, btnPi, btnOpenBracket, btnClosedBracket,
+                findViewById<LinearLayout>(R.id.llv_scientific_row_1), findViewById<LinearLayout>(R.id.llv_scientific_row_2)
+            ).forEach {
+                it?.visibility = if (it.isVisible) {
+                    View.GONE
+                } else {
+                    View.VISIBLE
+                }
+            }
         }
     }
 
@@ -290,6 +353,20 @@ class MainActivity : SimpleActivity(), Calculator {
     private fun View.setOnClickOperation(operation: String) {
         setVibratingOnClickListener {
             calc.handleOperation(operation)
+        }
+    }
+    private fun handleRad(){
+        if (calc.useDeg) {
+            calc.useDeg = false
+            binding.btnRad?.background?.alpha = MEDIUM_ALPHA_INT
+            binding.btnDeg?.background?.alpha = LOWER_ALPHA_INT
+        }
+    }
+    private fun handleDeg(){
+        if (!calc.useDeg) {
+            calc.useDeg = true
+            binding.btnRad?.background?.alpha = LOWER_ALPHA_INT
+            binding.btnDeg?.background?.alpha = MEDIUM_ALPHA_INT
         }
     }
 }

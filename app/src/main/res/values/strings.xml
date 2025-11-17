@@ -8,6 +8,9 @@
     <!-- Calculator field -->
     <string name="formula_divide_by_zero_error">Error: division by zero</string>
 
+    <!-- Scientific -->
+    <string name="scientific">Scientific</string>
+
     <!-- History -->
     <string name="history">History</string>
     <string name="history_empty">History is empty</string>

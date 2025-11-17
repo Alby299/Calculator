@@ -71,6 +71,93 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/btn_rad"
+                    style="@style/MyButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="rad" />
+
+                <TextView
+                    android:id="@+id/btn_deg"
+                    style="@style/MyButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="deg" />
+
+                <TextView
+                    android:id="@+id/btn_factorial"
+                    style="@style/MyButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="!" />
+
+                <TextView
+                    android:id="@+id/btn_power"
+                    style="@style/MyButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="^" />
+
+                <TextView
+                    android:id="@+id/btn_percent"
+                    style="@style/MyButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="%" />
+
+                <TextView
+                    android:id="@+id/btn_clear"
+                    style="@style/MyButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="C" />
+
+                <TextView
+                    android:id="@+id/btn_divide"
+                    style="@style/MyButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="÷" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/btn_sin"
+                    style="@style/MyButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="sin" />
+
+                <TextView
+                    android:id="@+id/btn_cos"
+                    style="@style/MyButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="cos" />
+
+                <TextView
+                    android:id="@+id/btn_tan"
+                    style="@style/MyButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="tan" />
+
+                <TextView
                     android:id="@+id/btn_7"
                     style="@style/MyButton"
                     android:layout_width="match_parent"
@@ -95,20 +182,12 @@
                     android:text="9" />
 
                 <TextView
-                    android:id="@+id/btn_divide"
+                    android:id="@+id/btn_multiply"
                     style="@style/MyButton"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="÷" />
-
-                <TextView
-                    android:id="@+id/btn_clear"
-                    style="@style/MyButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="C" />
+                    android:text="×" />
 
                 <TextView
                     android:id="@+id/btn_reset"
@@ -126,6 +205,30 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/btn_arcsin"
+                    style="@style/MyButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="sin⁻¹" />
+
+                <TextView
+                    android:id="@+id/btn_arccos"
+                    style="@style/MyButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="cos⁻¹" />
+
+                <TextView
+                    android:id="@+id/btn_arctan"
+                    style="@style/MyButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="tan⁻¹" />
 
                 <TextView
                     android:id="@+id/btn_4"
@@ -152,20 +255,12 @@
                     android:text="6" />
 
                 <TextView
-                    android:id="@+id/btn_multiply"
+                    android:id="@+id/btn_plus"
                     style="@style/MyButton"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="×" />
-
-                <TextView
-                    android:id="@+id/btn_root"
-                    style="@style/MyButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="√" />
+                    android:text="+" />
 
             </LinearLayout>
 
@@ -174,6 +269,30 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/btn_log"
+                    style="@style/MyButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="log" />
+
+                <TextView
+                    android:id="@+id/btn_ln"
+                    style="@style/MyButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="ln" />
+
+                <TextView
+                    android:id="@+id/btn_e"
+                    style="@style/MyButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="e" />
 
                 <TextView
                     android:id="@+id/btn_1"
@@ -207,14 +326,6 @@
                     android:layout_weight="1"
                     android:text="-" />
 
-                <TextView
-                    android:id="@+id/btn_power"
-                    style="@style/MyButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="^" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -222,6 +333,38 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/btn_pi"
+                    style="@style/MyButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="π" />
+
+                <TextView
+                    android:id="@+id/btn_open_bracket"
+                    style="@style/MyButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="(" />
+
+                <TextView
+                    android:id="@+id/btn_closed_bracket"
+                    style="@style/MyButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text=")" />
+
+                <TextView
+                    android:id="@+id/btn_root"
+                    style="@style/MyButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="√" />
 
                 <TextView
                     android:id="@+id/btn_0"
@@ -247,23 +390,8 @@
                     android:layout_weight="1"
                     android:text="=" />
 
-                <TextView
-                    android:id="@+id/btn_plus"
-                    style="@style/MyButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="+" />
-
-                <TextView
-                    android:id="@+id/btn_percent"
-                    style="@style/MyButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="%" />
-
             </LinearLayout>
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -4,6 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="AlwaysShowAction">
     <item
+        android:id="@+id/scientific_calculator"
+        android:icon="@drawable/ic_scientific_calculator"
+        android:title="@string/scientific"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/history"
         android:icon="@drawable/ic_clock_vector"
         android:title="@string/history"

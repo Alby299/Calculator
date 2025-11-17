@@ -2,6 +2,19 @@ package org.fossify.math.helpers
 
 import java.math.MathContext
 
+const val LOG = "logarithm_10"
+const val LN = "logarithm_e"
+const val SIN = "sine"
+const val COS = "cosine"
+const val TAN = "tangent"
+const val ARCSIN = "arcsine"
+const val ARCCOS = "arccosine"
+const val ARCTAN = "arctangent"
+const val FACTORIAL = "factorial"
+const val OPEN_BRACKET = "open_bracket"
+const val CLOSE_BRACKET = "close_bracket"
+const val PI_NUM = "pi"
+const val NEPERO_NUM = "nepero_number"
 const val DIGIT = "digit"
 const val EQUALS = "equals"
 const val PLUS = "plus"
